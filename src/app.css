@@ -1,19 +1,34 @@
 @import "tailwindcss";
 
 @theme {
-	--color-warm-bg: #FFF0E5;
-	--color-warm-bg-light: #FFF8F2;
-	--color-coral: #FF8B7E;
-	--color-coral-light: #FFB4AC;
-	--color-coral-dark: #E5706A;
-	--color-mint: #A8E6CF;
-	--color-mint-light: #C8F0DF;
-	--color-lavender: #D4A5FF;
-	--color-lavender-light: #E8CCFF;
-	--color-text-primary: #4A3728;
-	--color-text-secondary: #8B7355;
-	--color-text-light: #B8A08A;
-	--radius-base: 16px;
-	--radius-card: 20px;
+	--color-warm-bg: #FFF4E0;
+	--color-coral: #FF6B6B;
+	--color-coral-light: #FFA8A8;
+	--color-coral-dark: #E05252;
+	--color-mint: #4DED30;
+	--color-lavender: #C282FA;
+	--color-text-primary: #1A1A1A;
+	--color-text-secondary: #4A4A4A;
+	--color-text-light: #7A7A7A;
+	--radius-base: 12px;
+	--radius-card: 16px;
 	--font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+}
+
+@layer utilities {
+	.brutal-border {
+		@apply border-[3px] border-text-primary;
+	}
+	.brutal-shadow {
+		@apply shadow-[4px_4px_0px_#1A1A1A] transition-all duration-200;
+	}
+	.brutal-shadow-hover {
+		@apply hover:shadow-[6px_6px_0px_#1A1A1A] hover:-translate-y-[2px] transition-all duration-200;
+	}
+	.brutal-shadow-active {
+		@apply active:shadow-[0px_0px_0px_#1A1A1A] active:translate-y-[4px] active:translate-x-[4px];
+	}
+	.brutal-shadow-pressed {
+		@apply shadow-[0px_0px_0px_#1A1A1A] translate-y-[4px] translate-x-[4px] transition-all duration-200;
+	}
 }

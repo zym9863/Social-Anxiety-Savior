@@ -38,32 +38,40 @@
 </script>
 
 <div>
-	<header class="mb-6">
-		<div class="flex items-center gap-2 mb-1">
-			<Sparkles size={24} class="text-coral" />
-			<h1 class="text-xl font-bold">找话题</h1>
+	<header class="mb-10 brutal-border brutal-shadow bg-coral text-white p-6 rounded-[var(--radius-card)]">
+		<div class="flex items-center gap-3 mb-2">
+			<div class="bg-white p-2 rounded-full brutal-border brutal-shadow text-coral transform -rotate-12">
+				<Sparkles size={28} strokeWidth={2.5} />
+			</div>
+			<h1 class="text-3xl font-black tracking-tight" style="text-shadow: 2px 2px 0px #1A1A1A;">找话题</h1>
 		</div>
-		<p class="text-sm text-text-secondary">选择场景和关系，找到合适的话题</p>
+		<p class="text-white/90 font-medium text-sm border-t-2 border-white/30 pt-2 mt-2">
+			谁说聊天一定要尴尬？选个组合直接开聊。
+		</p>
 	</header>
 
-	<SceneSelector
-		items={scenes.map(s => ({ id: s.id, label: s.label, icon: s.icon }))}
-		selectedId={$selectedSceneId}
-		onSelect={handleSceneSelect}
-		label="什么场景？"
-	/>
-
-	{#if $relationships.length > 0}
+	<div class="space-y-6">
 		<SceneSelector
-			items={$relationships.map(r => ({ id: r.id, label: r.label }))}
-			selectedId={$selectedRelationshipId}
-			onSelect={handleRelationshipSelect}
-			label="和谁聊？"
+			items={scenes.map(s => ({ id: s.id, label: s.label, icon: s.icon }))}
+			selectedId={$selectedSceneId}
+			onSelect={handleSceneSelect}
+			label="在哪儿聊？📍"
 		/>
-	{/if}
+
+		{#if $relationships.length > 0}
+			<div class="animate-in fade-in slide-in-from-bottom-2">
+				<SceneSelector
+					items={$relationships.map(r => ({ id: r.id, label: r.label }))}
+					selectedId={$selectedRelationshipId}
+					onSelect={handleRelationshipSelect}
+					label="和谁聊？👤"
+				/>
+			</div>
+		{/if}
+	</div>
 
 	{#if topic}
-		<div class="mt-4">
+		<div class="mt-8 animate-in fade-in zoom-in-95 duration-300">
 			<TopicCard
 				text={topic.text}
 				tip={topic.tip}
@@ -72,12 +80,14 @@
 			/>
 		</div>
 	{:else if $selectedSceneId && $selectedRelationshipId}
-		<div class="mt-8 text-center text-text-light">
-			<p>暂时没有找到话题，试试其他组合？</p>
+		<div class="mt-10 p-6 brutal-border bg-white rounded-[var(--radius-card)] text-center text-text-secondary brutal-shadow rotate-1">
+			<p class="font-bold">暂时没有找到话题 🙉</p>
+			<p class="text-sm mt-1">试试其他不可思议的组合？</p>
 		</div>
 	{:else if $selectedSceneId}
-		<div class="mt-8 text-center text-text-light">
-			<p>选择和谁聊天，就能找到合适的话题了</p>
+		<div class="mt-10 p-6 brutal-border bg-lavender/30 rounded-[var(--radius-card)] text-center text-text-primary brutal-shadow -rotate-1">
+			<p class="font-bold">快选个人吧 👇</p>
+			<p class="text-sm mt-1">选好了我就给你支招</p>
 		</div>
 	{/if}
 </div>

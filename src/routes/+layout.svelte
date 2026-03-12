@@ -14,8 +14,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </svelte:head>
 
-<div class="min-h-svh bg-warm-bg text-text-primary font-sans">
-	<main class="max-w-lg mx-auto px-4 pt-6 pb-24">
+<div class="min-h-svh bg-warm-bg text-text-primary font-sans selection:bg-coral selection:text-white">
+	<div class="fixed inset-0 pointer-events-none opacity-20" style="background-image: radial-gradient(#1A1A1A 1px, transparent 1px); background-size: 24px 24px;"></div>
+	<main class="relative z-10 max-w-lg mx-auto px-4 pt-8 pb-32">
 		{@render children()}
 	</main>
 	<NavBar />

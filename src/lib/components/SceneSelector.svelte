@@ -26,23 +26,23 @@
 	};
 </script>
 
-<div class="mb-4">
-	<p class="text-sm text-text-secondary mb-2 font-medium">{label}</p>
-	<div class="flex flex-wrap gap-2">
+<div class="mb-6">
+	<p class="text-sm font-black mb-3 ml-1 bg-coral-light/30 inline-block px-2 py-0.5 rounded-md -rotate-1 border border-text-primary/50">{label}</p>
+	<div class="flex flex-wrap gap-3">
 		{#each items as item}
 			{@const isActive = item.id === selectedId}
 			{@const IconComp = item.icon ? iconMap[item.icon] : null}
 			<button
-				class="inline-flex items-center gap-1.5 px-4 py-2
-				       rounded-full text-sm font-medium
-				       transition-all duration-200
+				class="inline-flex items-center gap-1.5 px-4 py-2.5
+				       rounded-[var(--radius-base)] text-sm font-bold
+				       brutal-border
 				       {isActive
-				         ? 'bg-coral text-white shadow-md shadow-coral/25'
-				         : 'bg-white text-text-secondary hover:bg-coral-light/20 hover:text-coral'}"
+				         ? 'bg-coral text-white brutal-shadow-pressed'
+				         : 'bg-white text-text-primary brutal-shadow brutal-shadow-hover brutal-shadow-active'}"
 				onclick={() => onSelect(item.id)}
 			>
 				{#if IconComp}
-					<IconComp size={16} />
+					<IconComp size={18} strokeWidth={2.5} />
 				{/if}
 				{item.label}
 			</button>

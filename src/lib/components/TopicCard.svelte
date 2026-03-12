@@ -32,49 +32,56 @@
 {#if text}
 	{#key animKey}
 		<div
-			class="bg-white rounded-[var(--radius-card)] p-5 shadow-sm
-			       border border-coral/10"
-			in:fly={{ y: 10, duration: 250 }}
+			class="bg-white rounded-[var(--radius-card)] p-6 brutal-border brutal-shadow relative"
+			in:fly={{ y: 20, duration: 400, opacity: 0 }}
 		>
-			<p class="text-lg leading-relaxed text-text-primary mb-3">
+			<!-- Decorative pin -->
+			<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-coral rounded-full brutal-border shadow-sm z-10 flex items-center justify-center">
+				<div class="w-3 h-3 bg-white/40 rounded-full"></div>
+			</div>
+
+			<p class="text-xl font-black leading-relaxed text-text-primary mb-4 mt-2">
 				"{text}"
 			</p>
 
 			{#if tip}
-				<p class="text-xs text-text-light mb-3">{tip}</p>
+				<div class="bg-warm-bg p-3 rounded-[var(--radius-base)] brutal-border border-2 mb-4 transform -rotate-1">
+					<p class="text-sm font-bold flex gap-2 items-start">
+						<span class="text-coral">💡</span>
+						<span>{tip}</span>
+					</p>
+				</div>
 			{/if}
 
 			{#if tags.length > 0}
-				<div class="flex flex-wrap gap-1.5 mb-4">
+				<div class="flex flex-wrap gap-2 mb-5">
 					{#each tags as tag}
-						<span class="text-xs px-2 py-0.5 rounded-full bg-warm-bg text-text-secondary">
-							{tag}
+						<span class="text-xs font-bold px-2.5 py-1 rounded-md bg-mint/40 brutal-border border-2 text-text-primary transform rotate-1">
+							#{tag}
 						</span>
 					{/each}
 				</div>
 			{/if}
 
-			<div class="flex gap-2">
+			<div class="flex gap-3">
 				<button
-					class="flex-1 flex items-center justify-center gap-1.5
-					       py-2.5 rounded-[var(--radius-base)]
-					       bg-coral text-white text-sm font-medium
-					       hover:bg-coral-dark transition-colors duration-200
-					       active:scale-[0.98]"
+					class="flex-1 flex items-center justify-center gap-2
+					       py-3 rounded-[var(--radius-base)]
+					       bg-coral text-white font-black
+					       brutal-border brutal-shadow brutal-shadow-hover brutal-shadow-active"
 					onclick={handleRefresh}
 				>
-					<RefreshCw size={15} />
+					<RefreshCw size={18} strokeWidth={2.5} />
 					换一个
 				</button>
 				<button
-					class="flex items-center justify-center gap-1.5
-					       py-2.5 px-4 rounded-[var(--radius-base)]
-					       bg-warm-bg text-text-secondary text-sm font-medium
-					       hover:bg-coral-light/20 transition-colors duration-200
-					       active:scale-[0.98]"
+					class="flex items-center justify-center gap-2
+					       py-3 px-5 rounded-[var(--radius-base)]
+					       bg-white text-text-primary font-black
+					       brutal-border brutal-shadow brutal-shadow-hover brutal-shadow-active"
 					onclick={copyToClipboard}
 				>
-					<Copy size={15} />
+					<Copy size={18} strokeWidth={2.5} />
 					复制
 				</button>
 			</div>
